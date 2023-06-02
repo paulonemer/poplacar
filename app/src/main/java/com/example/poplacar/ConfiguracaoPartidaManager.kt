@@ -19,7 +19,6 @@ object ConfiguracaoPartidaManager {
         saveConfiguracoesPartidaList(context)
     }
 
-
     fun addConfiguracaoPartida(context: Context, configuracaoPartida: ConfiguracaoPartida) {
         configuracoesPartidaList.add(configuracaoPartida)
         saveConfiguracoesPartidaList(context)
@@ -35,7 +34,7 @@ object ConfiguracaoPartidaManager {
         saveConfiguracoesPartidaList(context)
     }
 
-    private fun saveConfiguracoesPartidaList(context: Context) {
+    fun saveConfiguracoesPartidaList(context: Context) {
         val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         val configuracoesPartidaJson = Gson().toJson(configuracoesPartidaList)
@@ -48,9 +47,11 @@ object ConfiguracaoPartidaManager {
         val configuracoesPartidaJson = sharedPreferences.getString(KEY_CONFIGURACOES_PARTIDA_LIST, null)
         configuracoesPartidaList = if (configuracoesPartidaJson != null) {
             val type = object : TypeToken<List<ConfiguracaoPartida>>() {}.type
-            Gson().fromJson(configuracoesPartidaJson, type)
+            val loadedList = Gson().fromJson<List<ConfiguracaoPartida>>(configuracoesPartidaJson, type)
+            mutableListOf<ConfiguracaoPartida>().apply { addAll(loadedList) }
         } else {
             mutableListOf()
         }
+
     }
 }

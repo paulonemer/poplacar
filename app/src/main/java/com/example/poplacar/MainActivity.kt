@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //lista que irá salvar as configurações
-        val configuracoesPartidaList = mutableListOf<ConfiguracaoPartida>()
 
         //essa lista deve setar as opções do spinner
         val opcoesPontosVitoria = (1..25).toList()
@@ -57,21 +55,14 @@ class MainActivity : AppCompatActivity() {
                 tempo = tempo.text.toString(),
                 pontosVitoria = spinnerPontosVitoria.selectedItem as Int
             )
-
-            configuracoesPartidaList.add(configuracao)
-
-            val gson = Gson()
-            val configuracoesJson = gson.toJson(configuracoesPartidaList)
-
-            val sharedPreferences = getSharedPreferences("configuracoes", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("configuracoesPartidaList", configuracoesJson)
-            editor.apply()
-
-            val intent = Intent(this, listapartidas::class.java)
+            ConfiguracaoPartidaManager.loadConfiguracoesPartidaList(this)
+            val novaConfiguracaoPartida = ConfiguracaoPartida(configuracao.time1, configuracao.time2, configuracao.tempo, configuracao.pontosVitoria)
+            val configuracoesPartidaList = ConfiguracaoPartidaManager.getConfiguracoesPartidaList().toMutableList()
+            configuracoesPartidaList.add(novaConfiguracaoPartida)
+            ConfiguracaoPartidaManager.setConfiguracoesPartidaList(this, configuracoesPartidaList)
+            ConfiguracaoPartidaManager.saveConfiguracoesPartidaList(this)
+            val intent = Intent(this, ListaPartidas::class.java)
             startActivity(intent)
-
-
         })
 
 
