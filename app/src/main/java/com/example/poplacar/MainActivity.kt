@@ -53,10 +53,12 @@ class MainActivity : AppCompatActivity() {
                 time1 = time1.text.toString(),
                 time2 = time2.text.toString(),
                 tempo = tempo.text.toString(),
-                pontosVitoria = spinnerPontosVitoria.selectedItem as Int
+                pontosVitoria = spinnerPontosVitoria.selectedItem as Int,
+                pontosTimeA = 0,
+                pontosTimeB = 0
             )
             ConfiguracaoPartidaManager.loadConfiguracoesPartidaList(this)
-            val novaConfiguracaoPartida = ConfiguracaoPartida(configuracao.time1, configuracao.time2, configuracao.tempo, configuracao.pontosVitoria)
+            val novaConfiguracaoPartida = ConfiguracaoPartida(configuracao.time1, configuracao.time2, configuracao.tempo, configuracao.pontosVitoria,configuracao.pontosTimeA,configuracao.pontosTimeB)
             val configuracoesPartidaList = ConfiguracaoPartidaManager.getConfiguracoesPartidaList().toMutableList()
             configuracoesPartidaList.add(novaConfiguracaoPartida)
             ConfiguracaoPartidaManager.setConfiguracoesPartidaList(this, configuracoesPartidaList)

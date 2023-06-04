@@ -4,7 +4,9 @@ data class ConfiguracaoPartida(
     val time1: String,
     val time2: String,
     val tempo: String,
-    val pontosVitoria: Int
+    val pontosVitoria: Int,
+    var pontosTimeA: Int,
+    var pontosTimeB: Int
 )
 
 

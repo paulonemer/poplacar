@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <color name="celaton">#A9E5BB</color>
+    <color name="baunilha">#FCF6B1</color>
+    <color name="amarelo">#F7B32B</color>
+    <color name="vermelho">#F72C25</color>
+    <color name="roxoescuro">#2D1E2F</color>
+
+    <color name="celatonc">#72D58F</color>
+    <color name="baunilhac">#f9ed62</color>
+    <color name="amareloc">#D99308</color>
+    <color name="vermelhoc">#C50D07</color>
+    <color name="roxoescuroc">#0C080C</color>
 </resources>
