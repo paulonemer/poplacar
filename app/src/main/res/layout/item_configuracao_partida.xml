@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:background="@drawable/rounded_background"
+    android:paddingLeft="6dp"
+    android:paddingTop="6dp"
+    android:paddingRight="6dp"
+    android:paddingBottom="6dp">
 
     <!-- Defina os elementos que deseja exibir aqui -->
 
@@ -12,8 +18,12 @@
         android:id="@+id/nomeTime1TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="5sp"
+        android:paddingTop="5sp"
+        android:paddingRight="5sp"
         android:text="text"
-        android:textSize="16sp"
+        android:textColor="@color/amarelo"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +33,12 @@
         android:id="@+id/nomeTime2TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="5sp"
+        android:paddingTop="5sp"
+        android:paddingRight="5sp"
         android:text="text"
-        android:textSize="16sp"
+        android:textColor="@color/roxoescuro"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeTime1TextView" />
@@ -35,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="308dp"
         android:text="time"
+        android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.979"
@@ -46,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="pontuação"
+        android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.996"
