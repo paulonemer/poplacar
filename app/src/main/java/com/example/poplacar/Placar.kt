@@ -1,16 +1,15 @@
 package com.example.poplacar
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import ConfiguracaoPartidaManager
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.TextView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Chronometer
 import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
 
@@ -22,10 +21,13 @@ class Placar : AppCompatActivity() {
     private lateinit var pontosTimeA: TextView
     private lateinit var pontosTimeB: TextView
     private lateinit var textoPontuacao: TextView
+
     data class EstadoPlacar(
         val pontosTimeA: Int,
-        val pontosTimeB: Int
+        val pontosTimeB: Int,
+        val timer: String = "00:00"
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -48,6 +50,12 @@ class Placar : AppCompatActivity() {
         //textoTempo = findViewById(R.id.settempo)
         pontosTimeA = findViewById<TextView>(R.id.PontosTimeAView)
         pontosTimeB = findViewById<TextView>(R.id.PontosTimeBView)
+        var add5TimeA = findViewById<FloatingActionButton>(R.id.add5TimeA)
+        var add2TimeA = findViewById<FloatingActionButton>(R.id.add2TimeA)
+        var add5TimeB = findViewById<FloatingActionButton>(R.id.add5TimeB)
+        var add2TimeB = findViewById<FloatingActionButton>(R.id.add2TimeB)
+        var timerPlayPause = findViewById<FloatingActionButton>(R.id.timerPlayPause)
+        var timer = findViewById<Chronometer>(R.id.timer)
 
 
         val position = intent.getIntExtra("position", -1)
@@ -68,6 +76,22 @@ class Placar : AppCompatActivity() {
         } else {
             // Nenhuma posição fornecida, faça o tratamento apropriado aqui
         }
+        timer.setOnChronometerTickListener {
+            (Chronometer.OnChronometerTickListener {
+                val estadoAtual = EstadoPlacar(
+                    pontosTimeA.text.toString().toInt(),
+                    pontosTimeB.text.toString().toInt(),
+                    timer.text.toString()
+                )
+                pilhaEstados.push(estadoAtual)
+            })
+        }
+
+        timerPlayPause.setOnClickListener(View.OnClickListener {
+            if (!timer.isEnabled)
+                timer.start()
+            else timer.stop()
+        })
 
         pontosTimeA.setOnClickListener(View.OnClickListener {
             val estadoAtual = EstadoPlacar(
@@ -78,6 +102,44 @@ class Placar : AppCompatActivity() {
 
             val contadorTimeA = pontosTimeA.text.toString().toInt() + 1
             pontosTimeA.text = contadorTimeA.toString()
+        })
+        add5TimeA.setOnClickListener(View.OnClickListener {
+            val estadoAtual = EstadoPlacar(
+                pontosTimeA.text.toString().toInt(),
+                pontosTimeB.text.toString().toInt()
+            )
+            pilhaEstados.push(estadoAtual)
+
+            val contadorTimeA = pontosTimeA.text.toString().toInt() + 5
+            pontosTimeA.text = contadorTimeA.toString()
+        })
+        add2TimeA.setOnClickListener(View.OnClickListener {
+            val estadoAtual = EstadoPlacar(
+                pontosTimeA.text.toString().toInt(),
+                pontosTimeB.text.toString().toInt()
+            )
+            pilhaEstados.push(estadoAtual)
+
+            val contadorTimeA = pontosTimeA.text.toString().toInt() + 2
+            pontosTimeA.text = contadorTimeA.toString()
+        })
+        add5TimeB.setOnClickListener(View.OnClickListener {
+            val estadoAtual = EstadoPlacar(
+                pontosTimeA.text.toString().toInt(),
+                pontosTimeB.text.toString().toInt()
+            )
+            pilhaEstados.push(estadoAtual)
+            val contadorTimeB = pontosTimeB.text.toString().toInt() + 5
+            pontosTimeB.text = contadorTimeB.toString()
+        })
+        add2TimeB.setOnClickListener(View.OnClickListener {
+            val estadoAtual = EstadoPlacar(
+                pontosTimeA.text.toString().toInt(),
+                pontosTimeB.text.toString().toInt()
+            )
+            pilhaEstados.push(estadoAtual)
+            val contadorTimeB = pontosTimeB.text.toString().toInt() + 2
+            pontosTimeB.text = contadorTimeB.toString()
         })
         pontosTimeB.setOnClickListener(View.OnClickListener {
             val estadoAtual = EstadoPlacar(
@@ -98,11 +160,6 @@ class Placar : AppCompatActivity() {
         }
 
 
-
-
-
-
-
     }
 
     fun salvarEstado() {
@@ -113,7 +170,8 @@ class Placar : AppCompatActivity() {
 
         val position = intent.getIntExtra("position", -1)
         if (position != -1) {
-            val configuracoesPartidaList = ConfiguracaoPartidaManager.getConfiguracoesPartidaList().toMutableList()
+            val configuracoesPartidaList =
+                ConfiguracaoPartidaManager.getConfiguracoesPartidaList().toMutableList()
             if (position < configuracoesPartidaList.size) {
                 val configuracaoPartida = configuracoesPartidaList[position]
                 configuracaoPartida.pontosTimeA = estadoPlacar.pontosTimeA
@@ -122,13 +180,17 @@ class Placar : AppCompatActivity() {
 
                 configuracoesPartidaList[position] = configuracaoPartida
                 // Atualizar a lista no SharedPreferences
-                ConfiguracaoPartidaManager.setConfiguracoesPartidaList(this, configuracoesPartidaList)
+                ConfiguracaoPartidaManager.setConfiguracoesPartidaList(
+                    this,
+                    configuracoesPartidaList
+                )
 
                 // Salvar a lista atualizada no SharedPreferences
                 ConfiguracaoPartidaManager.saveConfiguracoesPartidaList(this)
             }
         }
     }
+
     override fun onStop() {
         super.onStop()
 
