@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.Chronometer
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
@@ -76,6 +77,7 @@ class Placar : AppCompatActivity() {
         } else {
             // Nenhuma posição fornecida, faça o tratamento apropriado aqui
         }
+
         timer.setOnChronometerTickListener {
             (Chronometer.OnChronometerTickListener {
                 val estadoAtual = EstadoPlacar(
@@ -93,16 +95,16 @@ class Placar : AppCompatActivity() {
             else timer.stop()
         })
 
-        pontosTimeA.setOnClickListener(View.OnClickListener {
-            val estadoAtual = EstadoPlacar(
-                pontosTimeA.text.toString().toInt(),
-                pontosTimeB.text.toString().toInt()
-            )
-            pilhaEstados.push(estadoAtual)
-
-            val contadorTimeA = pontosTimeA.text.toString().toInt() + 1
-            pontosTimeA.text = contadorTimeA.toString()
-        })
+//        pontosTimeA.setOnClickListener(View.OnClickListener {
+//            val estadoAtual = EstadoPlacar(
+//                pontosTimeA.text.toString().toInt(),
+//                pontosTimeB.text.toString().toInt()
+//            )
+//            pilhaEstados.push(estadoAtual)
+//
+//            val contadorTimeA = pontosTimeA.text.toString().toInt() + 1
+//            pontosTimeA.text = contadorTimeA.toString()
+//        })
         add5TimeA.setOnClickListener(View.OnClickListener {
             val estadoAtual = EstadoPlacar(
                 pontosTimeA.text.toString().toInt(),
@@ -112,6 +114,7 @@ class Placar : AppCompatActivity() {
 
             val contadorTimeA = pontosTimeA.text.toString().toInt() + 5
             pontosTimeA.text = contadorTimeA.toString()
+//            salvarEstado()
         })
         add2TimeA.setOnClickListener(View.OnClickListener {
             val estadoAtual = EstadoPlacar(
@@ -122,6 +125,7 @@ class Placar : AppCompatActivity() {
 
             val contadorTimeA = pontosTimeA.text.toString().toInt() + 2
             pontosTimeA.text = contadorTimeA.toString()
+//            salvarEstado()
         })
         add5TimeB.setOnClickListener(View.OnClickListener {
             val estadoAtual = EstadoPlacar(
@@ -131,6 +135,7 @@ class Placar : AppCompatActivity() {
             pilhaEstados.push(estadoAtual)
             val contadorTimeB = pontosTimeB.text.toString().toInt() + 5
             pontosTimeB.text = contadorTimeB.toString()
+//            salvarEstado()
         })
         add2TimeB.setOnClickListener(View.OnClickListener {
             val estadoAtual = EstadoPlacar(
@@ -140,16 +145,17 @@ class Placar : AppCompatActivity() {
             pilhaEstados.push(estadoAtual)
             val contadorTimeB = pontosTimeB.text.toString().toInt() + 2
             pontosTimeB.text = contadorTimeB.toString()
+//            salvarEstado()
         })
-        pontosTimeB.setOnClickListener(View.OnClickListener {
-            val estadoAtual = EstadoPlacar(
-                pontosTimeA.text.toString().toInt(),
-                pontosTimeB.text.toString().toInt()
-            )
-            pilhaEstados.push(estadoAtual)
-            val contadorTimeB = pontosTimeB.text.toString().toInt() + 1
-            pontosTimeB.text = contadorTimeB.toString()
-        })
+//        pontosTimeB.setOnClickListener(View.OnClickListener {
+//            val estadoAtual = EstadoPlacar(
+//                pontosTimeA.text.toString().toInt(),
+//                pontosTimeB.text.toString().toInt()
+//            )
+//            pilhaEstados.push(estadoAtual)
+//            val contadorTimeB = pontosTimeB.text.toString().toInt() + 1
+//            pontosTimeB.text = contadorTimeB.toString()
+//        })
         val myButton = findViewById<LinearLayout>(R.id.myButton)
         myButton.setOnClickListener {
             if (!pilhaEstados.empty()) {
@@ -157,15 +163,33 @@ class Placar : AppCompatActivity() {
                 pontosTimeA.text = estadoAnterior.pontosTimeA.toString()
                 pontosTimeB.text = estadoAnterior.pontosTimeB.toString()
             }
+//            salvarEstado()
         }
+
+        timerPlayPause.setOnClickListener(object : View.OnClickListener {
+
+            var isPlaying = false
+
+            override fun onClick(v: View) {
+                val chronoMeter = findViewById<Chronometer>(R.id.timer)
+                isPlaying = if (!isPlaying) {
+                    chronoMeter.start()
+                    true
+                } else {
+                    chronoMeter.stop()
+                    false
+                }
+            }
+        })
 
 
     }
 
-    fun salvarEstado() {
+    private fun salvarEstado() {
         val estadoPlacar = EstadoPlacar(
             pontosTimeA = pontosTimeA.text.toString().toInt(),
-            pontosTimeB = pontosTimeB.text.toString().toInt()
+            pontosTimeB = pontosTimeB.text.toString().toInt(),
+            timer = textoTempo.text.toString()
         )
 
         val position = intent.getIntExtra("position", -1)
@@ -176,7 +200,7 @@ class Placar : AppCompatActivity() {
                 val configuracaoPartida = configuracoesPartidaList[position]
                 configuracaoPartida.pontosTimeA = estadoPlacar.pontosTimeA
                 configuracaoPartida.pontosTimeB = estadoPlacar.pontosTimeB
-
+                configuracaoPartida.tempo = estadoPlacar.timer
 
                 configuracoesPartidaList[position] = configuracaoPartida
                 // Atualizar a lista no SharedPreferences
@@ -192,15 +216,20 @@ class Placar : AppCompatActivity() {
     }
 
     override fun onStop() {
+        salvarEstado()
         super.onStop()
 
-        salvarEstado()
     }
 
     override fun onPause() {
+        salvarEstado()
         super.onPause()
 
+    }
+
+    override fun onDestroy() {
         salvarEstado()
+        super.onDestroy()
     }
 }
 

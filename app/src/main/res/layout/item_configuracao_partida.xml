@@ -18,6 +18,7 @@
         android:id="@+id/nomeTime1TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="150dp"
         android:paddingLeft="5sp"
         android:paddingTop="5sp"
         android:paddingRight="5sp"
@@ -25,6 +26,25 @@
         android:textColor="@color/amarelo"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nomeTime2TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:paddingLeft="5sp"
+        android:paddingTop="5sp"
+        android:paddingRight="5sp"
+        android:text="text"
+        android:textColor="@color/amarelo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,29 +53,16 @@
         android:id="@+id/pontosTime1TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginEnd="150dp"
         android:paddingLeft="5sp"
         android:paddingTop="5sp"
         android:paddingRight="5sp"
-        android:text="text"
-        android:textColor="@color/amarelo"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="-2dp" />
-
-    <TextView
-        android:id="@+id/nomeTime2TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5sp"
-        android:paddingTop="5sp"
-        android:paddingRight="5sp"
-        android:text="text"
+        android:text="0"
         android:textColor="@color/roxoescuro"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeTime1TextView" />
 
@@ -63,54 +70,32 @@
         android:id="@+id/pontosTime2TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="150dp"
         android:paddingLeft="5sp"
         android:paddingTop="5sp"
         android:paddingRight="5sp"
-        android:text="text"
+        android:text="0"
+        android:textColor="@color/roxoescuro"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomeTime2TextView" />
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="5sp"
+        android:paddingTop="5sp"
+        android:paddingRight="5sp"
+        android:text="0"
         android:textColor="@color/roxoescuro"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeTime1TextView" />
-
-    <TextView
-        android:id="@+id/tempoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5sp"
-        android:paddingTop="5sp"
-        android:paddingRight="5sp"
-        android:text="text"
-        android:textColor="@color/roxoescuro"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/nomeTime1TextView"
-        tools:layout_editor_absoluteX="358dp" />
-
-    <TextView
-        android:id="@+id/tempoTextViewLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="308dp"
-        android:text="time"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.979"
-        app:layout_constraintStart_toEndOf="@+id/nomeTime2TextView"
-        app:layout_constraintTop_toBottomOf="@+id/pontosTextView" />
-
-    <TextView
-        android:id="@+id/pontosTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="pontuação"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.996"
-        app:layout_constraintStart_toEndOf="@+id/nomeTime1TextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeTime2TextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

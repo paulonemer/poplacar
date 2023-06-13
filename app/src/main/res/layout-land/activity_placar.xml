@@ -44,6 +44,9 @@
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="12dp"
             android:background="@color/white"
+            app:backgroundTint="#9B5305"
+            app:maxImageSize="40dp"
+            android:src="@mipmap/ic_launcher_rugby2"
             android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,19 +55,20 @@
 
         <EditText
             android:id="@+id/settime2"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:autofillHints="Time B"
             android:background="@android:color/transparent"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="Equipe 2"
             android:textAlignment="center"
             android:textColor="@color/roxoescuroc"
-            android:textSize="44sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.674"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,6 +76,7 @@
             android:id="@+id/PontosTimeBView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="75dp"
             android:text="00"
             android:textColor="@color/white"
             android:textSize="150sp"
@@ -82,19 +87,19 @@
             app:layout_constraintTop_toBottomOf="@+id/settime2"
             app:layout_constraintVertical_bias="0.116" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/white"
-            android:textSize="64sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/PontosTimeBView"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView3"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="0"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="64sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/PontosTimeBView"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add5TimeB"
@@ -102,8 +107,13 @@
             android:layout_height="103dp"
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="15dp"
-            android:clickable="true"
             android:background="@color/white"
+            android:src="@mipmap/ic_launcher_rugby5"
+            android:foreground="@mipmap/ic_launcher_rugby5"
+            android:foregroundGravity="center"
+            android:clickable="true"
+            app:backgroundTint="#9B5305"
+            app:backgroundTintMode="add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -123,20 +133,20 @@
 
         <EditText
             android:id="@+id/settime1"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="28dp"
             android:autofillHints="Time A"
             android:background="@android:color/transparent"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="Equipe 1"
             android:textAlignment="center"
             android:textColor="@color/amareloc"
-            android:textSize="44sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.319"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -144,6 +154,7 @@
             android:id="@+id/PontosTimeAView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="75dp"
             android:text="00"
             android:textColor="@color/white"
             android:textSize="150sp"
@@ -154,58 +165,53 @@
             app:layout_constraintTop_toBottomOf="@+id/settime1"
             app:layout_constraintVertical_bias="0.116" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/white"
-            android:textSize="64sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/PontosTimeAView"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="0"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="64sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/PontosTimeAView"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add5TimeA"
             android:layout_width="120dp"
             android:layout_height="103dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginBottom="15dp"
-            android:clickable="true"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton4"
-            android:layout_width="60dp"
-            android:layout_height="88dp"
+            android:layout_gravity="end|bottom"
+            app:backgroundTint="#9B5305"
             android:layout_marginStart="50dp"
             android:layout_marginBottom="16dp"
-            android:background="@color/white"
             android:clickable="true"
+            android:foreground="@mipmap/ic_launcher_rugby5"
+            android:foregroundGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add2TimeA"
-            android:layout_width="60dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
             android:layout_marginStart="50dp"
             android:layout_marginBottom="16dp"
             android:background="@color/white"
             android:clickable="true"
+            android:src="@mipmap/ic_launcher_rugby2"
+            app:backgroundTint="#9B5305"
+            app:backgroundTintMode="add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.096"
+            app:layout_constraintStart_toStartOf="parent"
+            app:maxImageSize="40dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -227,7 +233,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:textSize="60sp"
+            android:textSize="40sp"
             tools:layout_editor_absoluteX="324dp" />
     </LinearLayout>
 
@@ -236,6 +242,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        app:backgroundTint="#683803"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hourLayout"
