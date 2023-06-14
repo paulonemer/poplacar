@@ -37,6 +37,8 @@ class Placar : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
+        var isPlaying = false
+
         setContentView(R.layout.activity_placar)
 
 
@@ -48,7 +50,7 @@ class Placar : AppCompatActivity() {
         val pilhaEstados = Stack<EstadoPlacar>()
         textoTime1 = findViewById(R.id.settime1)
         textoTime2 = findViewById(R.id.settime2)
-        //textoTempo = findViewById(R.id.settempo)
+        textoTempo = findViewById(R.id.timer)
         pontosTimeA = findViewById<TextView>(R.id.PontosTimeAView)
         pontosTimeB = findViewById<TextView>(R.id.PontosTimeBView)
         var add5TimeA = findViewById<FloatingActionButton>(R.id.add5TimeA)
@@ -168,11 +170,11 @@ class Placar : AppCompatActivity() {
 
         timerPlayPause.setOnClickListener(object : View.OnClickListener {
 
-            var isPlaying = false
-
             override fun onClick(v: View) {
                 val chronoMeter = findViewById<Chronometer>(R.id.timer)
+                println(chronoMeter.text)
                 isPlaying = if (!isPlaying) {
+                    chronoMeter.text = chronoMeter.text;
                     chronoMeter.start()
                     true
                 } else {
@@ -192,6 +194,8 @@ class Placar : AppCompatActivity() {
                     textoTempo = textoTempo.text.toString()
         )
 
+        val chronoMeter = findViewById<Chronometer>(R.id.timer)
+        chronoMeter.stop();
         val position = intent.getIntExtra("position", -1)
         if (position != -1) {
             val configuracoesPartidaList =
@@ -200,6 +204,7 @@ class Placar : AppCompatActivity() {
                 val configuracaoPartida = configuracoesPartidaList[position]
                 configuracaoPartida.pontosTimeA = estadoPlacar.pontosTimeA
                 configuracaoPartida.pontosTimeB = estadoPlacar.pontosTimeB
+                configuracaoPartida.tempoAtual = estadoPlacar.textoTempo
 
                 configuracoesPartidaList[position] = configuracaoPartida
                 // Atualizar a lista no SharedPreferences

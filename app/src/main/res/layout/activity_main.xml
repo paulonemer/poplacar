@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.787" />
+        app:layout_constraintVertical_bias="0.931" />
 
     <EditText
         android:id="@+id/settempo"
@@ -54,7 +54,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <Spinner
         android:id="@+id/setpontos"
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:text="Nome da Equipe 1"
         app:layout_constraintBottom_toTopOf="@+id/settime1"
-        tools:layout_editor_absoluteX="99dp" />
+        app:layout_constraintStart_toStartOf="@+id/settime1" />
 
     <TextView
         android:id="@+id/textView7"
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:text="Tempo de Partida (minutos)"
         app:layout_constraintBottom_toTopOf="@+id/settempo"
-        tools:layout_editor_absoluteX="101dp" />
+        app:layout_constraintStart_toStartOf="@+id/settempo" />
 
     <TextView
         android:id="@+id/textView5"
@@ -100,6 +100,6 @@
         android:layout_height="wrap_content"
         android:text="Nome da Equipe 2"
         app:layout_constraintBottom_toTopOf="@+id/settime2"
-        tools:layout_editor_absoluteX="99dp" />
+        app:layout_constraintStart_toStartOf="@+id/settime2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

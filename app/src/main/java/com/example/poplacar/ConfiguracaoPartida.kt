@@ -6,7 +6,8 @@ data class ConfiguracaoPartida(
     var tempo: String,
     val pontosVitoria: Int,
     var pontosTimeA: Int = 0,
-    var pontosTimeB: Int = 0
+    var pontosTimeB: Int = 0,
+    var tempoAtual: String,
 )
 
 

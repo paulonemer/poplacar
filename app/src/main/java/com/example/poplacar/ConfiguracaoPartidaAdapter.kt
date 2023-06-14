@@ -13,10 +13,11 @@ class ConfiguracaoPartidaAdapter(private val configuracoesList: List<Configuraca
 
     inner class ConfiguracaoPartidaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textTime1: TextView = itemView.findViewById(R.id.nomeTime1TextView)
-        val textTime2: TextView = itemView.findViewById(R.id.pontosTime1TextView)
-        val pontosTime1: TextView = itemView.findViewById(R.id.nomeTime2TextView)
+        val textTime2: TextView = itemView.findViewById(R.id.nomeTime2TextView)
+        val pontosTime1: TextView = itemView.findViewById(R.id.pontosTime1TextView)
         val pontosTime2: TextView = itemView.findViewById(R.id.pontosTime2TextView)
         val tempo: TextView = itemView.findViewById(R.id.timerTextView)
+        val tempoAtual: TextView = itemView.findViewById(R.id.timerAtualTextView)
 
         init {
             itemView.setOnClickListener {
@@ -40,7 +41,7 @@ class ConfiguracaoPartidaAdapter(private val configuracoesList: List<Configuraca
         holder.textTime2.text = configuracao.time2
         holder.pontosTime1.text = configuracao.pontosTimeA.toString()
         holder.pontosTime2.text = configuracao.pontosTimeB.toString()
-        holder.tempo.text = configuracao.tempo
+        holder.tempoAtual.text = configuracao.tempoAtual
     }
 
     override fun getItemCount(): Int {
