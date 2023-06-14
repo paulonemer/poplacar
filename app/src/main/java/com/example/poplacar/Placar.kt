@@ -18,7 +18,7 @@ class Placar : AppCompatActivity() {
 
     private lateinit var textoTime1: TextView
     private lateinit var textoTime2: TextView
-    private lateinit var textoTempo: TextView
+    private lateinit var textoTempo: Chronometer
     private lateinit var pontosTimeA: TextView
     private lateinit var pontosTimeB: TextView
     private lateinit var textoPontuacao: TextView
@@ -26,7 +26,7 @@ class Placar : AppCompatActivity() {
     data class EstadoPlacar(
         val pontosTimeA: Int,
         val pontosTimeB: Int,
-        val timer: String = "00:00"
+        val textoTempo: String = "00:00"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -189,7 +189,7 @@ class Placar : AppCompatActivity() {
         val estadoPlacar = EstadoPlacar(
             pontosTimeA = pontosTimeA.text.toString().toInt(),
             pontosTimeB = pontosTimeB.text.toString().toInt(),
-            timer = textoTempo.text.toString()
+                    textoTempo = textoTempo.text.toString()
         )
 
         val position = intent.getIntExtra("position", -1)
@@ -200,7 +200,6 @@ class Placar : AppCompatActivity() {
                 val configuracaoPartida = configuracoesPartidaList[position]
                 configuracaoPartida.pontosTimeA = estadoPlacar.pontosTimeA
                 configuracaoPartida.pontosTimeB = estadoPlacar.pontosTimeB
-                configuracaoPartida.tempo = estadoPlacar.timer
 
                 configuracoesPartidaList[position] = configuracaoPartida
                 // Atualizar a lista no SharedPreferences
