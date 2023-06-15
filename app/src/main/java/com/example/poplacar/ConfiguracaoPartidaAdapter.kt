@@ -1,11 +1,9 @@
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poplacar.ConfiguracaoPartida
-import com.example.poplacar.Placar
 import com.example.poplacar.R
 
 class ConfiguracaoPartidaAdapter(private val configuracoesList: List<ConfiguracaoPartida>) :
@@ -15,6 +13,11 @@ class ConfiguracaoPartidaAdapter(private val configuracoesList: List<Configuraca
 
     inner class ConfiguracaoPartidaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textTime1: TextView = itemView.findViewById(R.id.nomeTime1TextView)
+        val textTime2: TextView = itemView.findViewById(R.id.nomeTime2TextView)
+        val pontosTime1: TextView = itemView.findViewById(R.id.pontosTime1TextView)
+        val pontosTime2: TextView = itemView.findViewById(R.id.pontosTime2TextView)
+        val tempo: TextView = itemView.findViewById(R.id.timerTextView)
+        val tempoAtual: TextView = itemView.findViewById(R.id.timerAtualTextView)
 
         init {
             itemView.setOnClickListener {
@@ -35,6 +38,10 @@ class ConfiguracaoPartidaAdapter(private val configuracoesList: List<Configuraca
     override fun onBindViewHolder(holder: ConfiguracaoPartidaViewHolder, position: Int) {
         val configuracao = configuracoesList[position]
         holder.textTime1.text = configuracao.time1
+        holder.textTime2.text = configuracao.time2
+        holder.pontosTime1.text = configuracao.pontosTimeA.toString()
+        holder.pontosTime2.text = configuracao.pontosTimeB.toString()
+        holder.tempoAtual.text = configuracao.tempoAtual
     }
 
     override fun getItemCount(): Int {

@@ -10,9 +10,10 @@
         android:id="@+id/settime1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Equipe 1"
         app:layout_constraintBottom_toTopOf="@+id/settime2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -26,9 +27,10 @@
         android:text="salvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563" />
+        app:layout_constraintVertical_bias="0.931" />
 
     <EditText
         android:id="@+id/settempo"
@@ -36,6 +38,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:text="80"
         app:layout_constraintBottom_toTopOf="@+id/setpontos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,13 +48,13 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Configurações da partida"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <Spinner
         android:id="@+id/setpontos"
@@ -68,11 +71,35 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Equipe 2"
         app:layout_constraintBottom_toTopOf="@+id/settempo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settime1" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome da Equipe 1"
+        app:layout_constraintBottom_toTopOf="@+id/settime1"
+        app:layout_constraintStart_toStartOf="@+id/settime1" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tempo de Partida (minutos)"
+        app:layout_constraintBottom_toTopOf="@+id/settempo"
+        app:layout_constraintStart_toStartOf="@+id/settempo" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome da Equipe 2"
+        app:layout_constraintBottom_toTopOf="@+id/settime2"
+        app:layout_constraintStart_toStartOf="@+id/settime2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

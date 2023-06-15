@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val time1 = findViewById<EditText>(R.id.settime1)
         val time2 = findViewById<EditText>(R.id.settime2)
         val tempo = findViewById<EditText>(R.id.settempo)
+        val tempoAtual = findViewById<EditText>(R.id.settempo)
         val botaosalvar = findViewById<Button>(R.id.salvarset)
         val spinnerPontosVitoria: Spinner = findViewById(R.id.setpontos)
 
@@ -55,10 +56,11 @@ class MainActivity : AppCompatActivity() {
                 tempo = tempo.text.toString(),
                 pontosVitoria = spinnerPontosVitoria.selectedItem as Int,
                 pontosTimeA = 0,
-                pontosTimeB = 0
+                pontosTimeB = 0,
+                tempoAtual = "0:00"
             )
             ConfiguracaoPartidaManager.loadConfiguracoesPartidaList(this)
-            val novaConfiguracaoPartida = ConfiguracaoPartida(configuracao.time1, configuracao.time2, configuracao.tempo, configuracao.pontosVitoria,configuracao.pontosTimeA,configuracao.pontosTimeB)
+            val novaConfiguracaoPartida = ConfiguracaoPartida(configuracao.time1, configuracao.time2, configuracao.tempo, configuracao.pontosVitoria,configuracao.pontosTimeA,configuracao.pontosTimeB, configuracao.tempoAtual)
             val configuracoesPartidaList = ConfiguracaoPartidaManager.getConfiguracoesPartidaList().toMutableList()
             configuracoesPartidaList.add(novaConfiguracaoPartida)
             ConfiguracaoPartidaManager.setConfiguracoesPartidaList(this, configuracoesPartidaList)
